@@ -1,3 +1,91 @@
+import 'package:duoclone/home/appbar_home_screen.dart';
+import 'package:duoclone/home/widgets/sprite_button_label.dart';
+import 'package:duoclone/utils/sprites.dart';
+import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+
+class Home extends StatelessWidget {
+  const Home({
+    required this.navigationShell,
+    Key? key,
+  }) : super(key: key ?? const ValueKey<String>('Home'));
+
+  final StatefulNavigationShell navigationShell;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(45),
+        child: AppBarHomeScreen(),
+      ),
+      body: navigationShell,
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.only(top: 4),
+        decoration: const BoxDecoration(
+            border: BorderDirectional(
+                top: BorderSide(color: Color.fromRGBO(227, 227, 227, 1)))),
+        child: NavigationBar(
+          indicatorColor: Colors.white,
+          shadowColor: Colors.white,
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
+          destinations: <NavigationDestination>[
+            NavigationDestination(
+                icon: MySpriteButton(
+                  spriteDetails: MySprites.homeTab,
+                  selected: navigationShell.currentIndex == 0,
+                  onPressed: () => navigationShell.goBranch(0),
+                ),
+                label: ''),
+            NavigationDestination(
+                icon: MySpriteButton(
+                  spriteDetails: MySprites.language,
+                  selected: navigationShell.currentIndex == 1,
+                  onPressed: () => navigationShell.goBranch(1),
+                ),
+                label: ''),
+            NavigationDestination(
+                icon: MySpriteButton(
+                  spriteDetails: MySprites.chest,
+                  selected: navigationShell.currentIndex == 2,
+                  onPressed: () => navigationShell.goBranch(2),
+                ),
+                label: ''),
+            NavigationDestination(
+                icon: MySpriteButton(
+                  spriteDetails: MySprites.dubmbell,
+                  selected: navigationShell.currentIndex == 3,
+                  onPressed: () => navigationShell.goBranch(3),
+                ),
+                label: ''),
+            NavigationDestination(
+                icon: MySpriteButton(
+                  spriteDetails: MySprites.badge,
+                  selected: navigationShell.currentIndex == 4,
+                  onPressed: () => navigationShell.goBranch(4),
+                ),
+                label: ''),
+            NavigationDestination(
+                icon: MySpriteButton(
+                  spriteDetails: MySprites.options,
+                  selected: navigationShell.currentIndex == 5,
+                  onPressed: () => navigationShell.goBranch(5),
+                ),
+                label: ''),
+          ],
+          selectedIndex: navigationShell.currentIndex,
+          // onDestinationSelected: navigationShell.goBranch,
+        ),
+      ),
+    );
+  }
+}
+
+
+
+
+
 // import 'package:duoclone/home/appbar_home_screen.dart';
 // import 'package:duoclone/home/tabs/home.dart';
 // import 'package:duoclone/home/widgets/sprite_button_label.dart';
@@ -134,81 +222,3 @@
 //         ));
 //   }
 // }
-
-import 'package:duoclone/home/appbar_home_screen.dart';
-import 'package:duoclone/home/widgets/sprite_button_label.dart';
-import 'package:duoclone/utils/sprites.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-
-class Home extends StatelessWidget {
-  const Home({
-    required this.navigationShell,
-    Key? key,
-  }) : super(key: key ?? const ValueKey<String>('Home'));
-
-  final StatefulNavigationShell navigationShell;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: const Size.fromHeight(45),
-        child: AppBarHomeScreen(),
-      ),
-      body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        indicatorColor: Colors.white,
-        shadowColor: Colors.white,
-        backgroundColor: Colors.white,
-        surfaceTintColor: Colors.white,
-        destinations: <NavigationDestination>[
-          NavigationDestination(
-              icon: MySpriteButton(
-                spriteDetails: MySprites.homeTab,
-                selected: navigationShell.currentIndex == 0,
-                onPressed: () => navigationShell.goBranch(0),
-              ),
-              label: ''),
-          NavigationDestination(
-              icon: MySpriteButton(
-                spriteDetails: MySprites.language,
-                selected: navigationShell.currentIndex == 1,
-                onPressed: () => navigationShell.goBranch(1),
-              ),
-              label: ''),
-          NavigationDestination(
-              icon: MySpriteButton(
-                spriteDetails: MySprites.chest,
-                selected: navigationShell.currentIndex == 2,
-                onPressed: () => navigationShell.goBranch(2),
-              ),
-              label: ''),
-          NavigationDestination(
-              icon: MySpriteButton(
-                spriteDetails: MySprites.dubmbell,
-                selected: navigationShell.currentIndex == 3,
-                onPressed: () => navigationShell.goBranch(3),
-              ),
-              label: ''),
-          NavigationDestination(
-              icon: MySpriteButton(
-                spriteDetails: MySprites.badge,
-                selected: navigationShell.currentIndex == 4,
-                onPressed: () => navigationShell.goBranch(4),
-              ),
-              label: ''),
-          NavigationDestination(
-              icon: MySpriteButton(
-                spriteDetails: MySprites.options,
-                selected: navigationShell.currentIndex == 5,
-                onPressed: () => navigationShell.goBranch(5),
-              ),
-              label: ''),
-        ],
-        selectedIndex: navigationShell.currentIndex,
-        // onDestinationSelected: navigationShell.goBranch,
-      ),
-    );
-  }
-}

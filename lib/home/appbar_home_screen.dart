@@ -8,9 +8,13 @@ class AppBarHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: Colors.white,
-      leading: MySpriteButton(spriteDetails: MySprites.flag),
+      // leading: MySpriteButton(spriteDetails: MySprites.flag),
       elevation: 5,
       actions: <Widget>[
+        MySpriteButton(spriteDetails: MySprites.flag),
+        const SizedBox(
+          width: 65,
+        ),
         MySpriteButton(spriteDetails: MySprites.crown),
         const SizedBox(
           width: 8,
