@@ -1,4 +1,3 @@
-import 'package:duoclone/home/home.dart';
 import 'package:duoclone/utils/routes.dart';
 import 'package:flutter/material.dart';
 

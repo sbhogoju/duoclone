@@ -1,10 +1,16 @@
+import 'package:duoclone/home/widgets/sprite_button_label.dart';
 import 'package:duoclone/home/widgets/sprite_level_button.dart';
 import 'package:duoclone/utils/sprites.dart';
 import 'package:flutter/material.dart';
 
-class LevelSelection extends StatelessWidget {
+class LevelSelection extends StatefulWidget {
   const LevelSelection({super.key});
 
+  @override
+  State<LevelSelection> createState() => _LevelSelectionState();
+}
+
+class _LevelSelectionState extends State<LevelSelection> {
   double getMarginLeft(int index) {
     List<double> margins = [
       0,
@@ -27,6 +33,30 @@ class LevelSelection extends StatelessWidget {
     }
   }
 
+  Color progressColor = Colors.red;
+  double progressValue = 0.0;
+
+  void updateProgress() {
+    if (progressValue < 1) {
+      progressValue += 0.1;
+      progressValue = double.parse(progressValue.toStringAsFixed(1));
+      setState(() {
+        if (progressValue < 0.4) {
+          progressColor = Colors.red;
+        } else if (progressValue < 0.6) {
+          progressColor = Colors.yellow;
+        } else {
+          progressColor = Colors.green;
+        }
+      });
+    } else {
+      setState(() {
+        progressValue = 0.0;
+        progressColor = Colors.red;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,11 +70,53 @@ class LevelSelection extends StatelessWidget {
                 const SizedBox(
                   height: 16,
                 ),
-                MySpriteLevelButton(
-                  spriteDetails: MySprites.levelStar,
-                  pressedSpriteDetails: MySprites.levelStarPressed,
-                  popoverWidget: const SamplePopover(),
-                  marginLeft: getMarginLeft(0),
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Align(
+                      alignment: Alignment.center,
+                      child: SizedBox(
+                        height: 100,
+                        width: 100,
+                        child: Stack(
+                          alignment: Alignment.center,
+                          children: [
+                            SizedBox(
+                              height: 100,
+                              width: 100,
+                              child: RotationTransition(
+                                turns: const AlwaysStoppedAnimation(140 / 360),
+                                child: CircularProgressIndicator(
+                                  backgroundColor:
+                                      const Color.fromRGBO(229, 229, 229, 1),
+                                  value: progressValue,
+                                  strokeWidth: 6,
+                                  color: progressColor,
+                                  strokeCap: StrokeCap.round,
+                                ),
+                              ),
+                            ),
+                            if (progressValue >= 0.4)
+                              Align(
+                                alignment: Alignment.bottomRight,
+                                child: MySpriteButton(
+                                    spriteDetails: MySprites.crown),
+                              )
+                          ],
+                        ),
+                      ),
+                    ),
+                    MySpriteLevelButton(
+                      spriteDetails: MySprites.levelStar,
+                      pressedSpriteDetails: MySprites.levelStarPressed,
+                      popoverWidget: const SamplePopover(),
+                      marginLeft: getMarginLeft(0),
+                      onPressed: () {
+                        updateProgress();
+                      },
+                      hasProgress: true,
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 16,
