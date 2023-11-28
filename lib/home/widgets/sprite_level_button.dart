@@ -10,7 +10,7 @@ class MySpriteLevelButton extends StatelessWidget {
       {super.key,
       required this.spriteDetails,
       required this.pressedSpriteDetails,
-      required this.popoverWidget,
+      this.popoverWidget,
       required this.marginLeft,
       this.onPressed,
       this.hasProgress = false,
@@ -21,7 +21,7 @@ class MySpriteLevelButton extends StatelessWidget {
   final Function? onPressed;
   final bool? selected;
   final bool? hasProgress;
-  final Widget popoverWidget;
+  final Widget? popoverWidget;
 
   @override
   Widget build(BuildContext context) {
@@ -57,19 +57,21 @@ class MySpriteLevelButton extends StatelessWidget {
                         if (onPressed != null && hasProgress == true) {
                           onPressed!();
                         } else {
-                          showPopover(
-                              context: context,
-                              backgroundColor: Colors.grey,
-                              bodyBuilder: (context) => const Padding(
-                                    padding: EdgeInsets.all(16.0),
-                                    child: SamplePopover(),
-                                  ),
-                              onPop: () => print('Popover was popped!'),
-                              direction: PopoverDirection.bottom,
-                              width: 300,
-                              arrowHeight: 15,
-                              arrowWidth: 30,
-                              arrowDxOffset: marginLeft / 2);
+                          if (popoverWidget != null) {
+                            showPopover(
+                                context: context,
+                                backgroundColor: Colors.grey,
+                                bodyBuilder: (context) => Padding(
+                                      padding: const EdgeInsets.all(16.0),
+                                      child: popoverWidget,
+                                    ),
+                                onPop: () => print('Popover was popped!'),
+                                direction: PopoverDirection.bottom,
+                                width: 300,
+                                arrowHeight: 15,
+                                arrowWidth: 30,
+                                arrowDxOffset: marginLeft / 2);
+                          }
                         }
                       },
                       width: spriteDetails.customWidth ?? 100,

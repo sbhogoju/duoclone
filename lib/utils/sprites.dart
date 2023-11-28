@@ -6,6 +6,8 @@ class MySprites {
   static const String appBar = "appbar.png";
   static const String levels = "levelsAndBottom.png";
   static const String optionsImage = "options.png";
+  static const String cut = "cut.png";
+  static const String parrot = "logo-with-duo.png";
   static SpriteDetails basics = SpriteDetails(
     source: home,
     x: 300,
@@ -89,6 +91,16 @@ class MySprites {
       label: '',
       customHeight: 65,
       customWidth: 58);
+
+  static SpriteDetails xp10Large = SpriteDetails(
+      source: unit,
+      x: 434,
+      y: 188,
+      height: 136,
+      width: 116,
+      label: '',
+      customHeight: 130,
+      customWidth: 116);
 
   // APPBAR
   static SpriteDetails flag = SpriteDetails(
@@ -251,6 +263,51 @@ class MySprites {
       label: '',
       customHeight: 50,
       customWidth: 75);
+  static SpriteDetails button1 = SpriteDetails(
+      source: cut,
+      x: 727,
+      y: 79,
+      height: 74,
+      width: 122,
+      label: '',
+      customHeight: 50,
+      customWidth: 100);
+  static SpriteDetails button1Pressed = SpriteDetails(
+      source: cut,
+      x: 726,
+      y: 77,
+      height: 74,
+      width: 122,
+      label: '',
+      customHeight: 50,
+      customWidth: 100);
+  static SpriteDetails button2 = SpriteDetails(
+      source: cut,
+      x: 852,
+      y: 75,
+      height: 69,
+      width: 124,
+      label: '',
+      customHeight: 50,
+      customWidth: 100);
+  static SpriteDetails button2Pressed = SpriteDetails(
+      source: cut,
+      x: 851,
+      y: 73,
+      height: 69,
+      width: 124,
+      label: '',
+      customHeight: 50,
+      customWidth: 100);
+  static SpriteDetails parrotSprite = SpriteDetails(
+      source: parrot,
+      x: 117,
+      y: 64,
+      height: 251,
+      width: 279,
+      label: '',
+      customHeight: 150,
+      customWidth: 150);
 }
 
 class SpriteDetails {
