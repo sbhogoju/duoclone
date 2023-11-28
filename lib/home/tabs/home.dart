@@ -1,4 +1,5 @@
 import 'package:duoclone/home/widgets/sprite_button_label.dart';
+import 'package:duoclone/utils/routes.dart';
 import 'package:duoclone/utils/sprites.dart';
 import 'package:flutter/material.dart';
 
@@ -39,7 +40,12 @@ class _HomeTabState extends State<HomeTab> {
                 const SizedBox(
                   height: 32,
                 ),
-                MySpriteButton(spriteDetails: MySprites.basics),
+                MySpriteButton(
+                  spriteDetails: MySprites.basics,
+                  onPressed: () {
+                    AppRouter.router.goNamed(AppRouter.levels);
+                  },
+                ),
                 const SizedBox(
                   height: 32,
                 ),

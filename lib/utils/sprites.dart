@@ -1,8 +1,11 @@
+import 'package:flame/widgets.dart';
+
 class MySprites {
   static const String home = "home.png";
   static const String unit = "unit1.png";
   static const String appBar = "appbar.png";
   static const String levels = "levelsAndBottom.png";
+  static const String optionsImage = "options.png";
   static SpriteDetails basics = SpriteDetails(
     source: home,
     x: 300,
@@ -133,8 +136,8 @@ class MySprites {
       height: 197,
       width: 211,
       label: '',
-      customHeight: 100,
-      customWidth: 100);
+      customHeight: 80,
+      customWidth: 80);
 
   static SpriteDetails levelStarPressed = SpriteDetails(
       source: levels,
@@ -143,8 +146,8 @@ class MySprites {
       height: 172,
       width: 211,
       label: '',
-      customHeight: 95,
-      customWidth: 100);
+      customHeight: 80,
+      customWidth: 80);
 
   static SpriteDetails special1 = SpriteDetails(
       source: levels,
@@ -153,8 +156,8 @@ class MySprites {
       height: 249,
       width: 297,
       label: '',
-      customHeight: 125,
-      customWidth: 149);
+      customHeight: 100,
+      customWidth: 100);
   static SpriteDetails special2 = SpriteDetails(
       source: levels,
       x: 334,
@@ -220,6 +223,25 @@ class MySprites {
       label: '',
       customHeight: 30,
       customWidth: 30);
+  // OPTIONS
+  static SpriteDetails feed = SpriteDetails(
+      source: optionsImage,
+      x: 66,
+      y: 70,
+      width: 86,
+      height: 79,
+      label: '',
+      customHeight: 30,
+      customWidth: 30);
+  static SpriteDetails profile = SpriteDetails(
+      source: optionsImage,
+      x: 53,
+      y: 291,
+      height: 86,
+      width: 99,
+      label: '',
+      customHeight: 30,
+      customWidth: 30);
 }
 
 class SpriteDetails {
@@ -241,4 +263,13 @@ class SpriteDetails {
   double height;
   double? customHeight;
   double? customWidth;
+}
+
+class SpriteStates {
+  SpriteStates({
+    required this.sprite,
+    required this.pressedSprite,
+  });
+  Sprite sprite;
+  Sprite pressedSprite;
 }

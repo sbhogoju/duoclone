@@ -1,8 +1,6 @@
-import 'package:duoclone/home/widgets/sprite_button_label.dart';
 import 'package:duoclone/utils/images.dart';
 import 'package:duoclone/utils/routes.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -15,7 +13,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Future.delayed(const Duration(seconds: 3), () {
+      Future.delayed(const Duration(seconds: 1), () {
         AppRouter.router.goNamed(AppRouter.dashboard);
       });
     });
@@ -31,7 +29,13 @@ class _SplashScreenState extends State<SplashScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Image.asset(Images.logo),
+            Image.asset(
+              Images.logo,
+              height: 100,
+            ),
+            const SizedBox(
+              height: 100,
+            ),
             Text(
               'duolingo',
               style: Theme.of(context)

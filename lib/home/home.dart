@@ -70,7 +70,7 @@ class Home extends StatelessWidget {
                 icon: MySpriteButton(
                   spriteDetails: MySprites.options,
                   selected: navigationShell.currentIndex == 5,
-                  onPressed: () => navigationShell.goBranch(5),
+                  options: true,
                 ),
                 label: ''),
           ],

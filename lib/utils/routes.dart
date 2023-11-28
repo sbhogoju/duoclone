@@ -1,5 +1,6 @@
 import 'package:duoclone/home/home.dart';
 import 'package:duoclone/home/tabs/home.dart';
+import 'package:duoclone/home/tabs/home_sub_tabs/levels.dart';
 import 'package:duoclone/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -55,7 +56,7 @@ class AppRouter {
                     name: levels,
                     path: 'levels',
                     builder: (BuildContext context, GoRouterState state) {
-                      return const Placeholder();
+                      return const LevelSelection();
                     },
                   ),
                 ]),

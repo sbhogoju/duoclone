@@ -13,3 +13,10 @@ Future<Sprite> duoSprite(SpriteDetails spriteDetails) async {
     srcSize: Vector2(spriteDetails.width, spriteDetails.height),
   );
 }
+
+Future<SpriteStates> getSprites(
+    SpriteDetails spriteDetails, SpriteDetails pressedSpriteDetails) async {
+  var sprite = await duoSprite(spriteDetails);
+  var pressedSprite = await duoSprite(pressedSpriteDetails);
+  return SpriteStates(sprite: sprite, pressedSprite: pressedSprite);
+}
