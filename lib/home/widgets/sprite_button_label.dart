@@ -1,3 +1,5 @@
+import 'package:duoclone/home/widgets/hearts.dart';
+import 'package:duoclone/home/widgets/options.dart';
 import 'package:duoclone/utils/sprite_methods.dart';
 import 'package:duoclone/utils/sprites.dart';
 import 'package:flame/widgets.dart';
@@ -10,11 +12,13 @@ class MySpriteButton extends StatelessWidget {
       required this.spriteDetails,
       this.onPressed,
       this.selected,
-      this.options = false});
+      this.options = false,
+      this.hearts = false});
   final SpriteDetails spriteDetails;
   final Function? onPressed;
   final bool? selected;
   final bool? options;
+  final bool? hearts;
 
   @override
   Widget build(BuildContext context) {
@@ -43,41 +47,28 @@ class MySpriteButton extends StatelessWidget {
                       : null,
                   child: SpriteButton(
                     onPressed: () {
+                      if (hearts == true) {
+                        showPopover(
+                          context: context,
+                          backgroundColor: Colors.white,
+                          barrierColor:
+                              const Color.fromRGBO(153, 153, 153, 0.4),
+                          bodyBuilder: (context) => const Hearts(),
+                          onPop: () => print('Popover was popped!'),
+                          width: MediaQuery.of(context).size.width,
+                          direction: PopoverDirection.bottom,
+                          arrowDyOffset: 15.0,
+                          arrowHeight: 5,
+                          arrowWidth: 10,
+                        );
+                      }
                       if (options == true) {
                         showPopover(
                           context: context,
                           backgroundColor: Colors.white,
                           barrierColor:
                               const Color.fromRGBO(153, 153, 153, 0.4),
-                          bodyBuilder: (context) => Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              ListTile(
-                                title: const Text('Feed'),
-                                selectedColor:
-                                    const Color.fromRGBO(153, 153, 153, 0.4),
-                                hoverColor:
-                                    const Color.fromRGBO(153, 153, 153, 0.4),
-                                leading: MySpriteButton(
-                                  spriteDetails: MySprites.feed,
-                                ),
-                              ),
-                              const Divider(),
-                              ListTile(
-                                onTap: () {},
-                                focusColor:
-                                    const Color.fromRGBO(153, 153, 153, 0.4),
-                                selectedColor:
-                                    const Color.fromRGBO(153, 153, 153, 0.4),
-                                hoverColor:
-                                    const Color.fromRGBO(153, 153, 153, 0.4),
-                                title: const Text('Profile'),
-                                leading: MySpriteButton(
-                                  spriteDetails: MySprites.profile,
-                                ),
-                              ),
-                            ],
-                          ),
+                          bodyBuilder: (context) => const Options(),
                           onPop: () => print('Popover was popped!'),
                           width: MediaQuery.of(context).size.width,
                           direction: PopoverDirection.top,

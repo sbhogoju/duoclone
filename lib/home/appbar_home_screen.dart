@@ -42,7 +42,10 @@ class AppBarHomeScreen extends StatelessWidget {
         const SizedBox(
           width: 65,
         ),
-        MySpriteButton(spriteDetails: MySprites.heart),
+        MySpriteButton(
+          spriteDetails: MySprites.heart,
+          hearts: true,
+        ),
         const SizedBox(
           width: 8,
         ),

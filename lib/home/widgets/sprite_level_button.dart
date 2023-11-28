@@ -56,18 +56,18 @@ class MySpriteLevelButton extends StatelessWidget {
                         //   onPressed!();
                         // }
                         showPopover(
-                          context: context,
-                          backgroundColor: Colors.grey,
-                          bodyBuilder: (context) => const Padding(
-                            padding: EdgeInsets.all(16.0),
-                            child: SamplePopover(),
-                          ),
-                          onPop: () => print('Popover was popped!'),
-                          direction: PopoverDirection.bottom,
-                          width: 300,
-                          arrowHeight: 15,
-                          arrowWidth: 30,
-                        );
+                            context: context,
+                            backgroundColor: Colors.grey,
+                            bodyBuilder: (context) => const Padding(
+                                  padding: EdgeInsets.all(16.0),
+                                  child: SamplePopover(),
+                                ),
+                            onPop: () => print('Popover was popped!'),
+                            direction: PopoverDirection.bottom,
+                            width: 300,
+                            arrowHeight: 15,
+                            arrowWidth: 30,
+                            arrowDxOffset: marginLeft / 2);
                       },
                       width: spriteDetails.customWidth ?? 100,
                       height: spriteDetails.customHeight ?? 100,
