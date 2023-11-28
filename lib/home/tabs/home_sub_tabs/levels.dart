@@ -10,7 +10,50 @@ class LevelSelection extends StatefulWidget {
   State<LevelSelection> createState() => _LevelSelectionState();
 }
 
-class _LevelSelectionState extends State<LevelSelection> {
+class _LevelSelectionState extends State<LevelSelection>
+    with SingleTickerProviderStateMixin {
+  Color progressColor = Colors.red;
+  double progressValue = 0.0;
+
+  late final AnimationController _controller = AnimationController(
+    duration: const Duration(seconds: 2),
+    vsync: this,
+  )..repeat(reverse: true);
+  late final Animation<Offset> _offsetAnimation = Tween<Offset>(
+    begin: Offset.zero,
+    end: const Offset(0, -0.1),
+  ).animate(CurvedAnimation(
+    parent: _controller,
+    curve: Curves.easeInOutBack,
+  ));
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void updateProgress() {
+    if (progressValue < 1) {
+      progressValue += 0.1;
+      progressValue = double.parse(progressValue.toStringAsFixed(1));
+      setState(() {
+        if (progressValue < 0.4) {
+          progressColor = Colors.red;
+        } else if (progressValue < 0.7) {
+          progressColor = Colors.orange;
+        } else {
+          progressColor = Colors.green;
+        }
+      });
+    } else {
+      setState(() {
+        progressValue = 0.0;
+        progressColor = Colors.red;
+      });
+    }
+  }
+
   double getMarginLeft(int index) {
     List<double> margins = [
       0,
@@ -33,30 +76,6 @@ class _LevelSelectionState extends State<LevelSelection> {
     }
   }
 
-  Color progressColor = Colors.red;
-  double progressValue = 0.0;
-
-  void updateProgress() {
-    if (progressValue < 1) {
-      progressValue += 0.1;
-      progressValue = double.parse(progressValue.toStringAsFixed(1));
-      setState(() {
-        if (progressValue < 0.4) {
-          progressColor = Colors.red;
-        } else if (progressValue < 0.6) {
-          progressColor = Colors.yellow;
-        } else {
-          progressColor = Colors.green;
-        }
-      });
-    } else {
-      setState(() {
-        progressValue = 0.0;
-        progressColor = Colors.red;
-      });
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -68,54 +87,77 @@ class _LevelSelectionState extends State<LevelSelection> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(
-                  height: 16,
+                  height: 48,
                 ),
                 Stack(
                   alignment: Alignment.center,
                   children: [
-                    Align(
+                    Stack(
                       alignment: Alignment.center,
-                      child: SizedBox(
-                        height: 100,
-                        width: 100,
-                        child: Stack(
+                      children: [
+                        Align(
                           alignment: Alignment.center,
-                          children: [
-                            SizedBox(
-                              height: 100,
-                              width: 100,
-                              child: RotationTransition(
-                                turns: const AlwaysStoppedAnimation(140 / 360),
-                                child: CircularProgressIndicator(
-                                  backgroundColor:
-                                      const Color.fromRGBO(229, 229, 229, 1),
-                                  value: progressValue,
-                                  strokeWidth: 6,
-                                  color: progressColor,
-                                  strokeCap: StrokeCap.round,
+                          child: SizedBox(
+                            height: 160,
+                            width: 110,
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                SizedBox(
+                                  height: 100,
+                                  width: 100,
+                                  child: RotationTransition(
+                                    turns:
+                                        const AlwaysStoppedAnimation(140 / 360),
+                                    child: CircularProgressIndicator(
+                                      backgroundColor: const Color.fromRGBO(
+                                          229, 229, 229, 1),
+                                      value: progressValue,
+                                      strokeWidth: 6,
+                                      color: progressColor,
+                                      strokeCap: StrokeCap.round,
+                                    ),
+                                  ),
                                 ),
-                              ),
+                                Visibility(
+                                  visible: progressValue >= 0.4,
+                                  child: Positioned(
+                                    bottom: 28,
+                                    right: 4,
+                                    child: MySpriteButton(
+                                        spriteDetails: MySprites.crown),
+                                  ),
+                                ),
+                              ],
                             ),
-                            if (progressValue >= 0.4)
-                              Align(
-                                alignment: Alignment.bottomRight,
-                                child: MySpriteButton(
-                                    spriteDetails: MySprites.crown),
-                              )
-                          ],
+                          ),
+                        ),
+                        MySpriteLevelButton(
+                          spriteDetails: MySprites.levelStar,
+                          pressedSpriteDetails: MySprites.levelStarPressed,
+                          popoverWidget: const SamplePopover(),
+                          marginLeft: getMarginLeft(0),
+                          onPressed: () {
+                            updateProgress();
+                          },
+                          hasProgress: true,
+                        ),
+                      ],
+                    ),
+                    Visibility(
+                      visible: progressValue == 0,
+                      child: Positioned(
+                        top: 0,
+                        child: SlideTransition(
+                          position: _offsetAnimation,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child:
+                                MySpriteButton(spriteDetails: MySprites.start),
+                          ),
                         ),
                       ),
-                    ),
-                    MySpriteLevelButton(
-                      spriteDetails: MySprites.levelStar,
-                      pressedSpriteDetails: MySprites.levelStarPressed,
-                      popoverWidget: const SamplePopover(),
-                      marginLeft: getMarginLeft(0),
-                      onPressed: () {
-                        updateProgress();
-                      },
-                      hasProgress: true,
-                    ),
+                    )
                   ],
                 ),
                 const SizedBox(

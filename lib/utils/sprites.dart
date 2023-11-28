@@ -242,6 +242,15 @@ class MySprites {
       label: '',
       customHeight: 30,
       customWidth: 30);
+  static SpriteDetails start = SpriteDetails(
+      source: levels,
+      x: 469,
+      y: 455,
+      height: 155,
+      width: 226,
+      label: '',
+      customHeight: 50,
+      customWidth: 75);
 }
 
 class SpriteDetails {
