@@ -1,7 +1,23 @@
 import 'package:duoclone/utils/routes.dart';
+import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Flame.images.loadAll([
+    'home.png',
+    'unit1.png',
+    'appbar.png',
+    'levelsAndBottom.png',
+    'options.png',
+    'cut.png',
+    'logo-with-duo.png',
+    'pink.png',
+    'green.png',
+    'pinkStartPressed.jpeg',
+    'greenStartPressed.jpeg'
+  ]);
+
   runApp(const MyApp());
 }
 

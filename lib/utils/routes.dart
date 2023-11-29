@@ -1,6 +1,7 @@
 import 'package:duoclone/home/home.dart';
 import 'package:duoclone/home/tabs/home.dart';
 import 'package:duoclone/home/tabs/home_sub_tabs/levels.dart';
+import 'package:duoclone/math/math.dart';
 import 'package:duoclone/splash/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -16,6 +17,7 @@ class AppRouter {
   static const String badge = '/badge';
   static const String options = '/options';
   static const String levels = 'levels';
+  static const String math = 'math';
 
   static Page getPage({
     required Widget child,
@@ -33,6 +35,11 @@ class AppRouter {
       path: '/$splash',
       builder: (BuildContext context, GoRouterState state) =>
           const SplashScreen(),
+    ),
+    GoRoute(
+      name: math,
+      path: '/$math',
+      builder: (BuildContext context, GoRouterState state) => MathCourse(),
     ),
     StatefulShellRoute.indexedStack(
       parentNavigatorKey: rootNavigatorKey,

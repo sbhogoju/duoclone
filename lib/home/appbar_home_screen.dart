@@ -1,5 +1,5 @@
 import 'package:duoclone/home/widgets/sprite_button_label.dart';
-import 'package:duoclone/utils/images.dart';
+import 'package:duoclone/math/math.dart';
 import 'package:duoclone/utils/sprites.dart';
 import 'package:flutter/material.dart';
 
@@ -11,7 +11,16 @@ class AppBarHomeScreen extends StatelessWidget {
       // leading: MySpriteButton(spriteDetails: MySprites.flag),
       elevation: 5,
       actions: <Widget>[
-        MySpriteButton(spriteDetails: MySprites.flag),
+        MySpriteButton(
+          spriteDetails: MySprites.flag,
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                fullscreenDialog: true,
+                builder: (context) {
+                  return MathCourse();
+                }));
+          },
+        ),
         const SizedBox(
           width: 65,
         ),

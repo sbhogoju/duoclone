@@ -8,6 +8,10 @@ class MySprites {
   static const String optionsImage = "options.png";
   static const String cut = "cut.png";
   static const String parrot = "logo-with-duo.png";
+  static const String pink = "pink.png";
+  static const String green = "green.png";
+  static const String pinkPressed = "pinkStartPressed.jpeg";
+  static const String greenPressed = "greenStartPressed.jpeg";
   static SpriteDetails basics = SpriteDetails(
     source: home,
     x: 300,
@@ -308,6 +312,61 @@ class MySprites {
       label: '',
       customHeight: 150,
       customWidth: 150);
+  static SpriteDetails girl = SpriteDetails(
+      source: pink,
+      x: 215,
+      y: 546,
+      height: 673,
+      width: 763,
+      label: '',
+      customHeight: 250,
+      customWidth: 300);
+  static SpriteDetails parrotMap = SpriteDetails(
+      source: green,
+      x: 233,
+      y: 436,
+      height: 673,
+      width: 763,
+      label: '',
+      customHeight: 250,
+      customWidth: 300);
+  static SpriteDetails greenStart = SpriteDetails(
+      source: green,
+      x: 154,
+      y: 1985,
+      height: 148,
+      width: 862,
+      label: '',
+      customHeight: 50,
+      customWidth: 862);
+  static SpriteDetails pinkStart = SpriteDetails(
+      source: pink,
+      x: 155,
+      y: 1985,
+      height: 148,
+      width: 860,
+      label: '',
+      customHeight: 50,
+      customWidth: 860);
+
+  static SpriteDetails greenStartPressed = SpriteDetails(
+      source: greenPressed,
+      x: 8,
+      y: 144,
+      height: 136,
+      width: 864,
+      label: '',
+      customHeight: 45,
+      customWidth: 864);
+  static SpriteDetails pinkStartPressed = SpriteDetails(
+      source: pinkPressed,
+      x: 56,
+      y: 88,
+      height: 144,
+      width: 864,
+      label: '',
+      customHeight: 45,
+      customWidth: 864);
 }
 
 class SpriteDetails {
