@@ -1,6 +1,8 @@
 import 'package:duoclone/utils/images.dart';
 import 'package:duoclone/utils/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:audioplayers/src/audio_cache.dart';
+import 'package:audioplayers/audioplayers.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -17,7 +19,13 @@ class _SplashScreenState extends State<SplashScreen> {
         AppRouter.router.goNamed(AppRouter.dashboard);
       });
     });
+    playSound();
     super.initState();
+  }
+
+  Future<void> playSound() async {
+    AudioCache cache = AudioCache();
+    // return await cache.load(fileName);
   }
 
   @override
@@ -30,7 +38,7 @@ class _SplashScreenState extends State<SplashScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Image.asset(
-              Images.logo,
+              MyImages.logo,
               height: 100,
             ),
             const SizedBox(

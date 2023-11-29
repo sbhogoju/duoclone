@@ -193,14 +193,25 @@ class _LevelSelectionState extends State<LevelSelection>
                                       child: RotationTransition(
                                         turns: const AlwaysStoppedAnimation(
                                             140 / 360),
-                                        child: CircularProgressIndicator(
-                                          backgroundColor: const Color.fromRGBO(
-                                              229, 229, 229, 1),
-                                          value: progressValue,
-                                          strokeWidth: 6,
-                                          color: progressColor,
-                                          strokeCap: StrokeCap.round,
-                                        ),
+                                        child: TweenAnimationBuilder<double>(
+                                            duration:
+                                                const Duration(seconds: 1),
+                                            curve: Curves.easeInOut,
+                                            tween: Tween<double>(
+                                              begin: 0,
+                                              end: progressValue,
+                                            ),
+                                            builder: (context, value, _) {
+                                              return CircularProgressIndicator(
+                                                backgroundColor:
+                                                    const Color.fromRGBO(
+                                                        229, 229, 229, 1),
+                                                value: value,
+                                                strokeWidth: 6,
+                                                color: progressColor,
+                                                strokeCap: StrokeCap.round,
+                                              );
+                                            }),
                                       ),
                                     ),
                                     Visibility(

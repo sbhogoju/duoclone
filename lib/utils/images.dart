@@ -1,4 +1,4 @@
-class Images {
+class MyImages {
   //BottomNavigationBar
   static const String tabLessons =
       "assets/images/bottom_navigation_bar/tab_lessons.png";
