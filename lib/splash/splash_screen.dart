@@ -19,7 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
         AppRouter.router.goNamed(AppRouter.dashboard);
       });
     });
-    playLocalAsset();
+    // playLocalAsset();
     super.initState();
   }
 

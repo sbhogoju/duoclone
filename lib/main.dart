@@ -17,7 +17,9 @@ void main() async {
     'pink.png',
     'green.png',
     'pinkStartPressed.jpeg',
-    'greenStartPressed.jpeg'
+    'greenStartPressed.jpeg',
+    "colors_bw.png",
+    "colors.png"
   ]);
 
   runApp(const MyApp());

@@ -5,6 +5,7 @@ import 'package:duoclone/home/widgets/sprite_level_button.dart';
 import 'package:duoclone/utils/sounds.dart';
 import 'package:duoclone/utils/sprites.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class LevelSelection extends StatefulWidget {
   const LevelSelection({super.key});
@@ -396,6 +397,21 @@ class _LevelSelectionState extends State<LevelSelection>
                       popoverWidget: const SamplePopover(),
                       marginLeft: getMarginLeft(15),
                     ),
+                    TextButton.icon(
+                        icon: const Icon(Icons.arrow_back_rounded,
+                            color: Colors.redAccent),
+                        onPressed: () {
+                          context.pop();
+                        },
+                        label: Text(
+                          'GO BACK',
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleMedium!
+                              .copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.redAccent),
+                        )),
                   ],
                 ),
               ),

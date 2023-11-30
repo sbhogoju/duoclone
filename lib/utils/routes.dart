@@ -1,5 +1,6 @@
 import 'package:duoclone/home/home.dart';
 import 'package:duoclone/home/tabs/home.dart';
+import 'package:duoclone/home/tabs/home_sub_tabs/drag.dart';
 import 'package:duoclone/home/tabs/home_sub_tabs/levels.dart';
 import 'package:duoclone/math/math.dart';
 import 'package:duoclone/splash/splash_screen.dart';
@@ -17,7 +18,8 @@ class AppRouter {
   static const String badge = '/badge';
   static const String options = '/options';
   static const String levels = 'levels';
-  static const String math = 'math';
+  static const String drag = 'drag';
+  static const String math = '/math';
 
   static Page getPage({
     required Widget child,
@@ -38,8 +40,13 @@ class AppRouter {
     ),
     GoRoute(
       name: math,
-      path: '/$math',
-      builder: (BuildContext context, GoRouterState state) => MathCourse(),
+      path: math,
+      // builder: (BuildContext context, GoRouterState state) => MathCourse(),
+      pageBuilder: (context, state) {
+        return MaterialPage(
+          child: MathCourse(),
+        );
+      },
     ),
     StatefulShellRoute.indexedStack(
       parentNavigatorKey: rootNavigatorKey,
@@ -64,6 +71,13 @@ class AppRouter {
                     path: 'levels',
                     builder: (BuildContext context, GoRouterState state) {
                       return const LevelSelection();
+                    },
+                  ),
+                  GoRoute(
+                    name: drag,
+                    path: 'drag',
+                    builder: (BuildContext context, GoRouterState state) {
+                      return const MyDragPage();
                     },
                   ),
                 ]),

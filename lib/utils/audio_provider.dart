@@ -18,6 +18,18 @@ class AudioPlayerManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> pauseOnAppMinimized() async {
+    await _audioPlayer.pause();
+    notifyListeners();
+  }
+
+  Future<void> resumeOnAppForeground() async {
+    if (_isMusicOn) {
+      await _audioPlayer.resume();
+      notifyListeners();
+    }
+  }
+
   Future<void> startMusic(String path) async {
     await _audioPlayer.play(AssetSource(path));
     notifyListeners();

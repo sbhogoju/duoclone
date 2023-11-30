@@ -39,6 +39,7 @@ class _MathCourseState extends State<MathCourse> {
         leading: IconButton(
             onPressed: () {
               Navigator.of(context).pop();
+              // context.pop();
             },
             icon: const Icon(
               Icons.close,

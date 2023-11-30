@@ -14,15 +14,34 @@ class HomeTab extends StatefulWidget {
   State<HomeTab> createState() => _HomeTabState();
 }
 
-class _HomeTabState extends State<HomeTab> {
+class _HomeTabState extends State<HomeTab> with WidgetsBindingObserver {
   bool loading = false;
-
+  late AudioPlayerManager audioPlayerManager;
   @override
   void initState() {
     super.initState();
-    var audioPlayerManager =
+    WidgetsBinding.instance.addObserver(this);
+    audioPlayerManager =
         Provider.of<AudioPlayerManager>(context, listen: false);
     audioPlayerManager.startMusic(MySounds.background);
+  }
+
+  @override
+  void dispose() {
+    audioPlayerManager.dispose();
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.hidden) {
+      // App is minimized
+      audioPlayerManager.pauseOnAppMinimized();
+    } else if (state == AppLifecycleState.resumed) {
+      // App is resumed (brought to foreground)
+      audioPlayerManager.resumeOnAppForeground();
+    }
   }
 
   @override
@@ -64,7 +83,12 @@ class _HomeTabState extends State<HomeTab> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    MySpriteButton(spriteDetails: MySprites.phrases),
+                    MySpriteButton(
+                      spriteDetails: MySprites.phrases,
+                      onPressed: () {
+                        AppRouter.router.goNamed(AppRouter.drag);
+                      },
+                    ),
                     MySpriteButton(spriteDetails: MySprites.animals),
                   ],
                 ),

@@ -12,6 +12,9 @@ class MySprites {
   static const String green = "green.png";
   static const String pinkPressed = "pinkStartPressed.jpeg";
   static const String greenPressed = "greenStartPressed.jpeg";
+  static const String colorsBw = "colors_bw.png";
+  static const String colors = "colors.png";
+
   static SpriteDetails basics = SpriteDetails(
     source: home,
     x: 300,
@@ -367,6 +370,120 @@ class MySprites {
       label: '',
       customHeight: 45,
       customWidth: 864);
+
+  // colors
+
+  static SpriteDetails one = SpriteDetails(
+      source: colors,
+      x: 108,
+      y: 93,
+      height: 402,
+      width: 442,
+      label: '',
+      customHeight: 80,
+      customWidth: 80);
+  static SpriteDetails two = SpriteDetails(
+      source: colors,
+      x: 452,
+      y: 592,
+      height: 508,
+      width: 504,
+      label: '',
+      customHeight: 80,
+      customWidth: 80);
+  static SpriteDetails three = SpriteDetails(
+      source: colors,
+      x: 94,
+      y: 1395,
+      height: 463,
+      width: 382,
+      label: '',
+      customHeight: 80,
+      customWidth: 80);
+  static SpriteDetails four = SpriteDetails(
+      source: colors,
+      x: 1495,
+      y: 91,
+      height: 561,
+      width: 406,
+      label: '',
+      customHeight: 80,
+      customWidth: 80);
+  static SpriteDetails five = SpriteDetails(
+      source: colors,
+      x: 1269,
+      y: 1315,
+      height: 545,
+      width: 637,
+      label: '',
+      customHeight: 80,
+      customWidth: 80);
+  static SpriteDetails six = SpriteDetails(
+      source: colors,
+      x: 610,
+      y: 1615,
+      height: 301,
+      width: 634,
+      label: '',
+      customHeight: 80,
+      customWidth: 120);
+
+  // BW
+
+  static SpriteDetails oneBg = SpriteDetails(
+      source: colorsBw,
+      x: 108,
+      y: 93,
+      height: 402,
+      width: 442,
+      label: '',
+      customHeight: 80,
+      customWidth: 80);
+  static SpriteDetails twoBg = SpriteDetails(
+      source: colorsBw,
+      x: 452,
+      y: 592,
+      height: 508,
+      width: 504,
+      label: '',
+      customHeight: 80,
+      customWidth: 80);
+  static SpriteDetails threeBg = SpriteDetails(
+      source: colorsBw,
+      x: 94,
+      y: 1395,
+      height: 463,
+      width: 382,
+      label: '',
+      customHeight: 80,
+      customWidth: 80);
+  static SpriteDetails fourBg = SpriteDetails(
+      source: colorsBw,
+      x: 1495,
+      y: 91,
+      height: 561,
+      width: 406,
+      label: '',
+      customHeight: 80,
+      customWidth: 80);
+  static SpriteDetails fiveBg = SpriteDetails(
+      source: colorsBw,
+      x: 1269,
+      y: 1315,
+      height: 545,
+      width: 637,
+      label: '',
+      customHeight: 80,
+      customWidth: 80);
+  static SpriteDetails sixBg = SpriteDetails(
+      source: colorsBw,
+      x: 610,
+      y: 1615,
+      height: 301,
+      width: 634,
+      label: '',
+      customHeight: 80,
+      customWidth: 120);
 }
 
 class SpriteDetails {
