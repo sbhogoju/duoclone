@@ -1,4 +1,5 @@
 import 'package:audioplayers/audioplayers.dart';
+import 'package:duoclone/utils/sounds.dart';
 import 'package:flutter/foundation.dart';
 
 class AudioPlayerManager extends ChangeNotifier {
@@ -8,6 +9,7 @@ class AudioPlayerManager extends ChangeNotifier {
   bool get isMusicOn => _isMusicOn;
 
   Future<void> toggleMusic() async {
+    _audioPlayer.setSourceAsset(MySounds.background);
     if (_isMusicOn) {
       await _audioPlayer.pause();
     } else {
