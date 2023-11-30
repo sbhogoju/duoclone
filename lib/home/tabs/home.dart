@@ -1,7 +1,11 @@
 import 'package:duoclone/home/widgets/sprite_button_label.dart';
+import 'package:duoclone/utils/audio_provider.dart';
 import 'package:duoclone/utils/routes.dart';
+import 'package:duoclone/utils/sounds.dart';
 import 'package:duoclone/utils/sprites.dart';
 import 'package:flutter/material.dart';
+
+import 'package:provider/provider.dart';
 
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -12,6 +16,14 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   bool loading = false;
+
+  @override
+  void initState() {
+    super.initState();
+    var audioPlayerManager =
+        Provider.of<AudioPlayerManager>(context, listen: false);
+    audioPlayerManager.startMusic(MySounds.background);
+  }
 
   @override
   Widget build(BuildContext context) {

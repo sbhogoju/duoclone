@@ -1,6 +1,8 @@
+import 'package:duoclone/utils/audio_provider.dart';
 import 'package:duoclone/utils/routes.dart';
 import 'package:flame/flame.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,16 +29,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: AppRouter.router,
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-            backgroundColor: Colors.white,
-            elevation: 1,
-            surfaceTintColor: Colors.white),
-        useMaterial3: true,
+    return ChangeNotifierProvider(
+      create: (context) => AudioPlayerManager(),
+      child: MaterialApp.router(
+        routerConfig: AppRouter.router,
+        title: 'Flutter Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          appBarTheme: const AppBarTheme(
+              backgroundColor: Colors.white,
+              elevation: 1,
+              surfaceTintColor: Colors.white),
+          useMaterial3: true,
+        ),
       ),
     );
     // return MaterialApp(

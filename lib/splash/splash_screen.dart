@@ -1,7 +1,7 @@
 import 'package:duoclone/utils/images.dart';
 import 'package:duoclone/utils/routes.dart';
+import 'package:duoclone/utils/sounds.dart';
 import 'package:flutter/material.dart';
-import 'package:audioplayers/src/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -19,13 +19,20 @@ class _SplashScreenState extends State<SplashScreen> {
         AppRouter.router.goNamed(AppRouter.dashboard);
       });
     });
-    playSound();
+    playLocalAsset();
     super.initState();
   }
 
-  Future<void> playSound() async {
-    AudioCache cache = AudioCache();
-    // return await cache.load(fileName);
+  AudioPlayer audioPlayer = AudioPlayer();
+  Future<void> playLocalAsset() async {
+    var source = AssetSource(MySounds.parrotChirp);
+    audioPlayer.play(source);
+  }
+
+  @override
+  void dispose() {
+    audioPlayer.dispose();
+    super.dispose();
   }
 
   @override

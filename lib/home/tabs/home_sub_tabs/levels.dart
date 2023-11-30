@@ -1,6 +1,8 @@
+import 'package:audioplayers/audioplayers.dart';
 import 'package:duoclone/home/widgets/game_win.dart';
 import 'package:duoclone/home/widgets/sprite_button_label.dart';
 import 'package:duoclone/home/widgets/sprite_level_button.dart';
+import 'package:duoclone/utils/sounds.dart';
 import 'package:duoclone/utils/sprites.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +18,11 @@ class _LevelSelectionState extends State<LevelSelection>
   Color progressColor = Colors.red;
   double progressValue = 0.0;
   bool showWin = false;
+  AudioPlayer audioPlayer = AudioPlayer();
+  Future<void> playLocalAsset() async {
+    var source = AssetSource(MySounds.levelUp);
+    audioPlayer.play(source);
+  }
 
   late final AnimationController _controller = AnimationController(
     duration: const Duration(seconds: 2),
@@ -31,6 +38,7 @@ class _LevelSelectionState extends State<LevelSelection>
 
   @override
   void dispose() {
+    audioPlayer.dispose();
     _controller.dispose();
     super.dispose();
   }
@@ -50,6 +58,7 @@ class _LevelSelectionState extends State<LevelSelection>
         }
       });
     } else {
+      playLocalAsset();
       setState(() {
         progressValue = 0.0;
         showWin = true;
