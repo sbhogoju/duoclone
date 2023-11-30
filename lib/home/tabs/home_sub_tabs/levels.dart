@@ -5,6 +5,7 @@ import 'package:duoclone/home/widgets/sprite_level_button.dart';
 import 'package:duoclone/utils/sounds.dart';
 import 'package:duoclone/utils/sprites.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 
 class LevelSelection extends StatefulWidget {
@@ -58,8 +59,10 @@ class _LevelSelectionState extends State<LevelSelection>
           progressColor = Colors.green;
         }
       });
+      HapticFeedback.mediumImpact();
     } else {
       playLocalAsset();
+      HapticFeedback.vibrate();
       setState(() {
         progressValue = 0.0;
         showWin = true;

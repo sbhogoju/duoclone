@@ -4,6 +4,7 @@ import 'package:duoclone/utils/sprite_methods.dart';
 import 'package:duoclone/utils/sprites.dart';
 import 'package:flame/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:popover/popover.dart';
 
 class MySpriteButton extends StatelessWidget {
@@ -48,6 +49,7 @@ class MySpriteButton extends StatelessWidget {
                   child: SpriteButton(
                     onPressed: () {
                       if (hearts == true) {
+                        HapticFeedback.mediumImpact();
                         showPopover(
                           context: context,
                           backgroundColor: Colors.white,
@@ -63,6 +65,7 @@ class MySpriteButton extends StatelessWidget {
                         );
                       }
                       if (options == true) {
+                        HapticFeedback.mediumImpact();
                         showPopover(
                           context: context,
                           backgroundColor: Colors.white,
@@ -78,6 +81,7 @@ class MySpriteButton extends StatelessWidget {
                         );
                       }
                       if (onPressed != null) {
+                        HapticFeedback.mediumImpact();
                         onPressed!();
                       }
                     },

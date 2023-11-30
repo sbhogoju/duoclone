@@ -3,6 +3,7 @@ import 'package:duoclone/utils/audio_provider.dart';
 import 'package:duoclone/utils/sounds.dart';
 import 'package:duoclone/utils/sprites.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 
@@ -154,6 +155,8 @@ class _MyDragPageState extends State<MyDragPage> with TickerProviderStateMixin {
                 }, onAccept: (item) {
                   if (item == 4) {
                     updateBgList(4);
+                  } else {
+                    HapticFeedback.heavyImpact();
                   }
                 }),
                 LongPressDraggable(
@@ -166,6 +169,8 @@ class _MyDragPageState extends State<MyDragPage> with TickerProviderStateMixin {
                 }, onAccept: (item) {
                   if (item == 3) {
                     updateBgList(3);
+                  } else {
+                    HapticFeedback.heavyImpact();
                   }
                 }),
                 LongPressDraggable(
@@ -178,6 +183,8 @@ class _MyDragPageState extends State<MyDragPage> with TickerProviderStateMixin {
                 }, onAccept: (item) {
                   if (item == 1) {
                     updateBgList(1);
+                  } else {
+                    HapticFeedback.heavyImpact();
                   }
                 }),
                 LongPressDraggable(
@@ -190,6 +197,8 @@ class _MyDragPageState extends State<MyDragPage> with TickerProviderStateMixin {
                 }, onAccept: (item) {
                   if (item == 2) {
                     updateBgList(2);
+                  } else {
+                    HapticFeedback.heavyImpact();
                   }
                 }),
                 LongPressDraggable(
@@ -202,6 +211,8 @@ class _MyDragPageState extends State<MyDragPage> with TickerProviderStateMixin {
                 }, onAccept: (item) {
                   if (item == 0) {
                     updateBgList(0);
+                  } else {
+                    HapticFeedback.heavyImpact();
                   }
                 }),
               ],

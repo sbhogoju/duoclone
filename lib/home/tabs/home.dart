@@ -28,7 +28,6 @@ class _HomeTabState extends State<HomeTab> with WidgetsBindingObserver {
 
   @override
   void dispose() {
-    audioPlayerManager.dispose();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }

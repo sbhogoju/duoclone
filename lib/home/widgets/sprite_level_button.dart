@@ -3,6 +3,7 @@ import 'package:duoclone/utils/sprites.dart';
 import 'package:flame/components.dart';
 import 'package:flame/widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:popover/popover.dart';
 
 class MySpriteLevelButton extends StatelessWidget {
@@ -54,6 +55,7 @@ class MySpriteLevelButton extends StatelessWidget {
                         : EdgeInsets.only(right: -marginLeft),
                     child: SpriteButton(
                       onPressed: () {
+                        HapticFeedback.mediumImpact();
                         if (onPressed != null && hasProgress == true) {
                           onPressed!();
                         } else {
