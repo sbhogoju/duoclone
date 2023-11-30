@@ -82,12 +82,6 @@ class _MyDragPageState extends State<MyDragPage> with TickerProviderStateMixin {
   }
 
   @override
-  void dispose() {
-    audioPlayerManager.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

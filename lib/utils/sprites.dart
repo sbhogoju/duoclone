@@ -21,7 +21,7 @@ class MySprites {
     y: 54,
     height: 142,
     width: 142,
-    label: 'Basics 1',
+    label: 'Levels',
   );
   static SpriteDetails phrases = SpriteDetails(
     source: home,
@@ -29,7 +29,7 @@ class MySprites {
     y: 278,
     height: 142,
     width: 142,
-    label: 'Phrases',
+    label: 'Drag game',
   );
   static SpriteDetails animals = SpriteDetails(
     source: home,
